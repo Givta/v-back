@@ -1,8 +1,19 @@
 {
   "version": 2,
-  "functions": {
-    "server.js": {
-      "runtime": "nodejs18.x"
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build"
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "https://v-back-orpin.vercel.app/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "index.html"
+    }
+  ]
 }
